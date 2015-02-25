@@ -1,5 +1,77 @@
-body {
-  h1 {
-    background-color: #fff;
+/* ---- Imports ---- */
+@import "partials/reset";
+@import "partials/settings";
+@import "partials/mixins";
+
+
+/* ---- Globals/Locals ---- */
+
+body{
+  background-image: url('/assets/bg.jpg');
+}
+
+a{
+  color: $nav_color;
+  &:hover{
+    color: $link_hover;
+  }
+
+  li & {
+    text-transform: uppercase;
+    font-family: $font_oswald;
+    text-decoration: none;
+    padding: 20px;
   }
 }
+
+h2{
+  @include pug_fonts( 1.5em, 1, $title_color )
+}
+
+
+/* ---- Layout Styles ---- */
+
+header{
+  background-color: $white;
+  background-image: url('/assets/header_bg.svg');
+  @include pug_bg( 680px, no-repeat );
+  background-position: center 45px;
+  // position: relative;
+  
+  .logo {
+    background-image: url('/assets/logo.svg');
+    @include pug_bg( 100%, no-repeat );
+    background-position: center;
+    width: 200px;
+    height: 100px;
+    margin: auto;
+  }//end of logo
+
+  .plus {
+    border: 1px solid $menu_plus;
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+    // position: absolute;
+    // display: block;
+    float: right;
+  }//end of plus
+
+  nav{
+    background-color: $dark_grey;
+    padding: 20px;
+
+    ul{
+      text-align: center;
+
+      li{
+        display: inline-block;
+      }//end of li
+    }//end of ul
+  }//end of nav
+
+}//end of header
+
+
+
+
