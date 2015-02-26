@@ -199,7 +199,6 @@ article {
     article .meta span {
       margin: 0 2px; }
   article .excerpt {
-    background-color: pink;
     max-height: 67px;
     overflow: hidden; }
   article:hover {

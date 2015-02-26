@@ -11,7 +11,8 @@
 
 */
 $(function(){
-  getApps();
+  
+  getRandom();
 
   $(".app").click(getApps);
   $(".boards").click(getBoards);
@@ -27,60 +28,45 @@ function timeAgo( created ){
 
 function getApps(){ 
   $.get("/api/get_the_app.json", function( data ){
-    var articles = data.data.children;
-    $.each(articles, function( index, article ){
-      
-      var newArticle = {
-        url : article.data.url,
-        title : article.data.title,
-        author : article.data.author,
-        views : article.data.score,
-        age : timeAgo(article.data.created) + 'ago'
-      };
-
-      renderBox(newArticle);
-    });
+    getArtcles( data );
   });
 }
 
 function getBoards(){
   $.get("/api/my_boards.json", function( data ){
-    var articles = data.data.children;
-    $.each(articles, function( index, article ){
-      
-      var newArticle = {
-        url : article.data.url,
-        title : article.data.title,
-        author : article.data.author,
-        views : article.data.score,
-        age : timeAgo(article.data.created) + 'ago'
-      };
-
-      renderBox(newArticle);
-    });
+    getArtcles( data );
   });
 }
 
 function getRandom(){
   $.get("/api/random.json", function( data ){
-    var articles = data.data.children;
-    $.each(articles, function( index, article ){
-      
-      var newArticle = {
-        url : article.data.url,
-        title : article.data.title,
-        author : article.data.author,
-        views : article.data.score,
-        age : timeAgo(article.data.created) + 'ago'
-      };
-
-      renderBox(newArticle);
-    });
+    getArtcles( data );
   });
 }
 
+function getArtcles( data ){
+  var articles = data.data.children;
+  $.each(articles, function( index, article ){
+    
+    var newArticle = {
+      url : article.data.url,
+      title : article.data.title,
+      author : article.data.author,
+      views : article.data.score,
+      age : timeAgo(article.data.created) + " ago"
+    };
+
+    renderBox(newArticle);
+  });
+}
+
+
+//if url does not have extension - add extention
+
+
 function renderBox( article_data ){
-  console.log(article_data);
+    $(".demo").remove();
+    // console.log(article_data);
     //create the outermost container element
     var box = $("<article>", {
       "class" : "panels"
