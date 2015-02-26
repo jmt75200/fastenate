@@ -119,7 +119,7 @@ function renderBox( article_data ){
 
     var count = $("<span>", {
       "class" : "views",
-      html: article_data.views
+      html: article_data.views + "views"
     });
 
     var meta = metatag.append( [author, date, count] );

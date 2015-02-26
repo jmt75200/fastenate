@@ -200,11 +200,16 @@ article{
       }//end of span
   }//end of meta
 
+  .excerpt{
+    max-height: 67px;
+    overflow: hidden;
+  }
+
+  &:hover{
+    border: 4px solid $border_hover;
+  }
 }//end of article
 
-article:hover{
-  border: 4px solid $border_hover;
-}
 
 footer{
   @media #{$large-only}{
